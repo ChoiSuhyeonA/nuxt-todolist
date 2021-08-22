@@ -20,7 +20,7 @@ export default {
       integrity:"sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p", crossorigin:"anonymous"}
     ]
   },
-
+  
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -37,7 +37,7 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
   ],
-
+  
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
   ],
