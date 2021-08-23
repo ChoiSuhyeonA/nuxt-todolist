@@ -28,7 +28,7 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped>
   ul{
     /* 리스트에 점을 없애준다. */
     list-style-type: none; 
