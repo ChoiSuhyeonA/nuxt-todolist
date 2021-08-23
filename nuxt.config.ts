@@ -44,5 +44,15 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+  /*
+  ** Add server middleware
+  ** Nuxt.js uses `connect` module as server
+  ** So most of express middleware works with nuxt.js server middleware
+  */
+  serverMiddleware: [
+    // <project root>/api/index.js 모듈을 미들웨어로 추가
+    '~/api/index.js'
+  ]
+
 }
