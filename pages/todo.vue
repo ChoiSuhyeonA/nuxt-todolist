@@ -22,7 +22,6 @@ import TodoInput from '../components/TodoInput.vue'
 import TodoList from '../components/TodoList.vue'
 import TodoFooter from '../components/TodoFooter.vue'
 import Vue from 'vue'
-
 export default Vue.extend ({
   
   components:{
@@ -31,16 +30,14 @@ export default Vue.extend ({
     TodoList,
     TodoFooter,
   },
-
   data(){      
      return {
-     data : [''],
+      data : [''],
       todoItems : ['']  
      } ;
   }
-    
-   
-    
+     
+     
     // return {
     //  todoItems : ['']  
     // } as {
