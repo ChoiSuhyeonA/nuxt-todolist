@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    {{data}}
+    {{data2}}
     <TodoHeader></TodoHeader>
     <TodoInput @addTodo="addTodo"></TodoInput>
     <TodoList :propsdata="todoItems" @removeTodo="removeTodo"></TodoList>
@@ -15,6 +17,7 @@ import TodoInput from '../components/TodoInput.vue'
 import TodoList from '../components/TodoList.vue'
 import TodoFooter from '../components/TodoFooter.vue'
 import Vue from 'vue'
+
 export default Vue.extend ({
   
   components:{
@@ -23,35 +26,31 @@ export default Vue.extend ({
     TodoList,
     TodoFooter,
   },
-  
-  
 
-  created(){
-        
-        // if(localStorage.length>0){
-        // for(let i:number=0; i<localStorage.length; i++){
-        //   // eslint-disable-next-line eqeqeq
-        //   if(localStorage.key(i) != 'loglevel:webpack-dev-server'){
-        //     let a:string =localStorage.key(i)
-        //    this.todoItems.push(a);
-        //   }
-        
-        // } 
-        // }
-   },
-
-  data(){
-      
-
-    
-    return {
-     todoItems : ['']  
-    } as {
-        todoItems: Array<string>
-    };
+  data(){      
+     return {
+     data : '',
+     data2: '',
+      todoItems : ['']  
+     } ;
   }
+    
+   
+    
+    // return {
+    //  todoItems : ['']  
+    // } as {
+    //     todoItems: Array<string>
+    // };
   ,   
-
+  async created() {
+    await this.$axios.get('/api/todolist').then((res) =>{
+        //const result: string = res.data
+       this.data = res.data.name
+       this.data2 = res.data.name2
+    });
+    
+  },
   methods:{
    
      addTodo(todoItem: string){
