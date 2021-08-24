@@ -4,7 +4,7 @@ const todolist = require('./todolist');
 // express 인스턴스 생성
 const app = express()
 //express-todolist 백엔드 연결 
-app.use(todolist);
+app.use('/todolist', todolist);
 
 app.use(express.json())
 

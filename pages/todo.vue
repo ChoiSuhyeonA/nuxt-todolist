@@ -40,7 +40,6 @@ export default Vue.extend ({
      } ;
   }
      
-
     // return {
     //  todoItems : ['']  
     // } as {
@@ -71,8 +70,6 @@ export default Vue.extend ({
     //     }).then((res)=>{
     //       this.init()
     //     })
-
-
        async addTodo(todoItem: string){
          console.log('add');
         this.newTodoItem = todoItem
@@ -91,7 +88,6 @@ export default Vue.extend ({
       await this.$axios.post('api/todolist/alldelete').then((res)=> {
         this.init()
       })
-
      },
      async removeTodo(todoItem: string, index: number){
       //  localStorage.removeItem(todoItem);
