@@ -23,7 +23,7 @@ connection.connect(function(err){
     }
 }) 
 // 실제로는 /api/todolist 라우트를 처리하는 메소드가 된다.
-router.get('/', function(req, res) {
+router.get('/', (req, res) =>{
    // console.log('express api/todolist');
    
     // res.json({
@@ -37,7 +37,7 @@ router.get('/', function(req, res) {
       });
 })
 
-router.post('/insert', function(req, res){
+router.post('/', function(req, res){
 
     newTodoItem = req.body.data.value
     console.log('server axios get newTodoItem:', newTodoItem)
@@ -64,8 +64,8 @@ router.post('/insert', function(req, res){
 //     } )
 // })
 
-router.post('/delete', function(req, res){
-    deleteTodoItem =  req.body.data.value
+router.delete('/:id', function(req, res){
+    deleteTodoItem =  req.params.id
     connection.query('DELETE FROM todolist WHERE id = ?',[deleteTodoItem], function(err, result){
         if(err) throw err;
         else{
@@ -76,7 +76,7 @@ router.post('/delete', function(req, res){
     res.send(true);
 })
 
-router.post('/todolist/alldelete', function(req, res){
+router.delete('/', function(req, res){
     connection.query('TRUNCATE todolist', function(err, result){
         if(err) throw err;
         else{

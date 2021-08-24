@@ -71,9 +71,8 @@ export default Vue.extend ({
     //       this.init()
     //     })
        async addTodo(todoItem: string){
-         console.log('add');
         this.newTodoItem = todoItem
-        this.$axios.post('/api/todolist/insert', {
+        this.$axios.post('/api/todolist/', {
          data:{ 'value':this.newTodoItem}
         }).then( (res => {
           console.log('add init test')
@@ -85,7 +84,7 @@ export default Vue.extend ({
      async clearAll(){
       //  localStorage.clear();
       //  this.todoItems = [];
-      await this.$axios.post('api/todolist/alldelete').then((res)=> {
+      await this.$axios.delete('api/todolist/').then((res)=> {
         this.init()
       })
      },
@@ -93,7 +92,7 @@ export default Vue.extend ({
       //  localStorage.removeItem(todoItem);
       //  this.todoItems.splice(index, 1)
           this.deleteTodoItem = todoItem
-          await this.$axios.post('/api/todolist/delete', {
+          await this.$axios.delete(`/api/todolist/${this.deleteTodoItem}`, {
             data:{value:this.deleteTodoItem}
           }).then((res)=>{
               this.init()
