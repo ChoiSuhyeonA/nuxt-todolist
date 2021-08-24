@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <ul>
-      <li v-for = "index in data" v-bind:key="index">
-          {{index.id}}:{{index.name}}
+    <!-- <ul>
+      <li v-for = "todoItem in todoItems" v-bind:key="todoItem">
+          {{todoItem.id}}:{{todoItem.name}}
       </li>
-    </ul>
+    </ul> -->
 
   
     <TodoHeader></TodoHeader>
@@ -22,6 +22,8 @@ import TodoInput from '../components/TodoInput.vue'
 import TodoList from '../components/TodoList.vue'
 import TodoFooter from '../components/TodoFooter.vue'
 import Vue from 'vue'
+import { param } from '~/api/todolist'
+import axios from 'axios'
 export default Vue.extend ({
   
   components:{
@@ -32,42 +34,74 @@ export default Vue.extend ({
   },
   data(){      
      return {
-      data : [''],
-      todoItems : ['']  
+      newTodoItem: '',
+      deleteTodoItem: '',
+      todoItems : [''] ,
      } ;
   }
      
-     
+
     // return {
     //  todoItems : ['']  
     // } as {
     //     todoItems: Array<string>
     // };
-  ,   
-  async created() {
-    await this.$axios.get('/api/todolist').then((res) =>{
-        //const result: string = res.data
-       this.data = res.data
-       console.log(this.data)
-       // console.log(res.data.id) result = undefined
-       
-      
-    });
-    
+  ,
+ created() {
+     this.init()
   },
   methods:{
-   
-     addTodo(todoItem: string){
-        localStorage.setItem(todoItem, todoItem);
-        this.todoItems.push(todoItem);
+    
+    async init(){
+      await this.$axios.get('/api/todolist').then((res)=>{
+        this.todoItems= res.data
+        // console.log(this.todoItems)
+         console.log('init test')
+      })
+    },
+     
+    //  async addTodo(todoItem: string){
+    //     // localStorage.setItem(todoItem, todoItem);
+    //     // this.todoItems.push(todoItem);
+       
+    //      //새로 추가할 데이터 값을 서버에게 전달.
+    //     this.newTodoItem = todoItem
+    //     await this.$axios.get('/api/todolist/insert', {
+    //      params:{ value:this.newTodoItem}
+    //     }).then((res)=>{
+    //       this.init()
+    //     })
+
+
+       async addTodo(todoItem: string){
+         console.log('add');
+        this.newTodoItem = todoItem
+        this.$axios.post('/api/todolist/insert', {
+         data:{ 'value':this.newTodoItem}
+        }).then( (res => {
+          console.log('add init test')
+          this.init()
+        }))
+       
+        
      },
-     clearAll():void{
-       localStorage.clear();
-       this.todoItems = [];
+     async clearAll(){
+      //  localStorage.clear();
+      //  this.todoItems = [];
+      await this.$axios.post('api/todolist/alldelete').then((res)=> {
+        this.init()
+      })
+
      },
-     removeTodo(todoItem: string, index: number):void{
-       localStorage.removeItem(todoItem);
-       this.todoItems.splice(index, 1)
+     async removeTodo(todoItem: string, index: number){
+      //  localStorage.removeItem(todoItem);
+      //  this.todoItems.splice(index, 1)
+          this.deleteTodoItem = todoItem
+          await this.$axios.post('/api/todolist/delete', {
+            data:{value:this.deleteTodoItem}
+          }).then((res)=>{
+              this.init()
+          })
      }
   }
 })

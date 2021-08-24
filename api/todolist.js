@@ -1,7 +1,8 @@
-
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql')
+
+router.use(express.json());
 
 //connection 객체 생성
 var connection = mysql.createConnection({
@@ -36,5 +37,52 @@ router.get('/todolist', function(req, res) {
       });
 })
 
+router.post('/todolist/insert', function(req, res){
 
+    newTodoItem = req.body.data.value
+    console.log('server axios get newTodoItem:', newTodoItem)
+    connection.query('INSERT INTO todolist (name) values(?)  ', [newTodoItem],function(err, result){
+        if(err) throw err;
+        else{
+            console.log("insert sql success");
+        }
+       
+    } )
+    res.send(true);
+})
+
+
+// router.get('/todolist/insert', function(req, res){
+//     newTodoItem =req.query.value
+//     console.log('server axios get newTodoItem:'+ newTodoItem)
+//     connection.query('INSERT INTO todolist values(?)  ', [newTodoItem],function(err, result){
+//         if(err) throw err;
+//         else{
+//             console.log("insert sql success");
+//         }
+       
+//     } )
+// })
+
+router.post('/todolist/delete', function(req, res){
+    deleteTodoItem =  req.body.data.value
+    connection.query('DELETE FROM todolist WHERE id = ?',[deleteTodoItem], function(err, result){
+        if(err) throw err;
+        else{
+            console.log("Number of todolist deleted" );
+        }
+        
+    })
+    res.send(true);
+})
+
+router.post('/todolist/alldelete', function(req, res){
+    connection.query('TRUNCATE todolist', function(err, result){
+        if(err) throw err;
+        else{
+            console.log("All delete data");
+        }
+    })
+    res.send(true);
+})
 module.exports = router;
