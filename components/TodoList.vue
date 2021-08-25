@@ -47,14 +47,12 @@ export default Vue.extend({
     background: white;
     border-radius: 20px;
   }
-
   .checkBtn{
     line-height: 45px;
     color:rgb(7, 177, 126);
     margin-left: 30px;
     margin-right: 70px;
   }
-
   .removeBtn{
     margin-left:auto;
     color:rgb(245, 9, 213)

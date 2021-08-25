@@ -33,7 +33,7 @@ export default Vue.extend ({
     TodoFooter,
   },
   data(){      
-     return {
+     return {  
       newTodoItem: '',
       deleteTodoItem: '',
       todoItems : [''] ,
