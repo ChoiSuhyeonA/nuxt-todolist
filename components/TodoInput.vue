@@ -21,6 +21,7 @@ export default Vue.extend({
         const value:string = this.newTodoItem && this.newTodoItem.trim() ;
           this.$emit('addTodo', value);
           this.newTodoItem  =''
+          
       }
     }
   }
