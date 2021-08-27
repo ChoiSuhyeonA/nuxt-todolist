@@ -22,7 +22,6 @@ export default Vue.extend({
           this.$emit('addTodo', value);
           this.newTodoItem  =''
       }
-    
     }
   }
 })

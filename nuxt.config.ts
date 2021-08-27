@@ -23,6 +23,7 @@ export default {
   
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+   
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -30,7 +31,7 @@ export default {
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: false, //내가 하나하나 등록하지 않아도 자동으로 등록된다( 대신 빌드시간이 오래걸린다.) -> 따라서 false로 그리고 명시적으로 등록해줘야 한다.
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -44,6 +45,8 @@ export default {
     
   ],
 
+ 
+
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -55,7 +58,9 @@ export default {
   */
   serverMiddleware: [
     // <project root>/api/index.js 모듈을 미들웨어로 추가
-    '~/api/index.js'
+    '@/api/index.js'
   ]
+
+ 
 
 }
