@@ -4,7 +4,7 @@
       <!-- v-for를 사용할때는 반드시 key값을 연결해줘야 한다. -->
       <li v-for="(todoItem, index) in propsdata" :key="index" >
          <i class="checkBtn fas fa-check" aria-hidden="true"></i>
-         {{ todoItem.name }} 
+         {{ todoItem.name }}
          <span class="removeBtn" type="Button" @click="removeTodo(todoItem.id, index)">
            <i class ="far fa-trash-alt" aria-hidden="true"></i>
          </span>
@@ -16,6 +16,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import inputs from '@/components/TodoInput.vue'
 export default Vue.extend({
   // eslint-disable-next-line vue/require-prop-types
   props:['propsdata'],

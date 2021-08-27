@@ -38,8 +38,6 @@ export default Vue.extend({
      background:rgb(200, 234, 240);
    width: 50em;
     text-align: center;
-   
-    
   }
   .inputBox{
       background:rgb(200, 234, 240);
