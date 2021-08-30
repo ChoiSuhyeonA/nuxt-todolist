@@ -19,6 +19,7 @@
 
 import { Component, Vue, Prop, Emit } from 'nuxt-property-decorator';
 import inputs from '@/components/TodoInput.vue'
+
 @Component
 export default class TodoList extends Vue{
   // eslint-disable-next-line vue/require-prop-types
@@ -26,11 +27,15 @@ export default class TodoList extends Vue{
    //props:['propsdata']
    @Prop() propsdata: string[] | undefined
 
-
   public removeTodo(todoItem:string, index:number):void{
      this.$emit('removeTodo', todoItem, index);
     }
- 
+
+  //  @Emit('removeTodo')
+  //  removeTodo(todoItem:string, index:number){
+  //    return (todoItem, index)
+  //  }
+
   
 }
 </script>

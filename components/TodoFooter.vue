@@ -13,7 +13,7 @@ export default class TodoFooter extends Vue{
     //  this.$emit('removeAll')
     // }
     
-    @Emit('clearTodo')
+    @Emit('removeAll')
     public clearTodo(){
     }
 }

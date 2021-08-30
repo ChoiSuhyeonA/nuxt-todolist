@@ -15,10 +15,17 @@ import TodoHeader from '~/components/TodoHeader.vue'
 import TodoInput from '~/components/TodoInput.vue'
 import TodoList from '~/components/TodoList.vue'
 import TodoFooter from '~/components/TodoFooter.vue'
-import { Component, Vue, Prop } from 'nuxt-property-decorator';
+import { Component, Vue } from 'nuxt-property-decorator';
+import Vuex from 'vuex'
 
 import { param } from '~/api/todolist'
 import axios from 'axios'
+
+
+Vue.use(Vuex)
+const store = new Vuex.Store({
+
+})
 
  @Component({
     components:{
@@ -45,8 +52,6 @@ export default class MainComponent extends Vue {
     public async init(){
       await this.$axios.get('/api/todolist').then((res)=>{
         this.todoItems= res.data
-        // console.log(this.todoItems)
-         console.log('init test')
       })
     }   
     //  async addTodo(todoItem: string){
@@ -65,7 +70,7 @@ export default class MainComponent extends Vue {
         this.$axios.post('/api/todolist/', {
          data:{ 'value':this.newTodoItem}
         }).then( (res => {
-          console.log('add init test')
+          console.log('add data : ' + this.newTodoItem)
           this.init()
         }))
     }

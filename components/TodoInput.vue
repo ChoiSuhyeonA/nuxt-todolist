@@ -9,19 +9,31 @@
 
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'nuxt-property-decorator';
+import { Component, Vue, Prop , Emit} from 'nuxt-property-decorator';
 @Component
 export default class TodoInput extends Vue{
  
    newTodoItem:string=''
    
-  public addTodo():void{
-      if(this.newTodoItem!==""){
-        const value:string = this.newTodoItem && this.newTodoItem.trim() ;
-          this.$emit('addTodo', value);
-          this.newTodoItem  ='' 
-      }
-    }
+  // public addTodo():void{
+  //     if(this.newTodoItem!==""){
+  //       const value:string = this.newTodoItem && this.newTodoItem.trim() ;
+  //         this.$emit('addTodo', value);
+  //         this.newTodoItem  ='' 
+  //     }
+  //   }
+
+  @Emit('addTodo')
+  addTodo(){
+     if(this.newTodoItem!==""){
+      const value:string = this.newTodoItem && this.newTodoItem.trim() ;
+      
+      this.newTodoItem  =''
+      return value
+     }
+    
+
+  }
   
 }
 </script>
