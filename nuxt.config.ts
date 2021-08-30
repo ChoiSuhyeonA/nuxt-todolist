@@ -31,7 +31,7 @@ export default {
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: false, //내가 하나하나 등록하지 않아도 자동으로 등록된다( 대신 빌드시간이 오래걸린다.) -> 따라서 false로 그리고 명시적으로 등록해줘야 한다.
+  components: false, //내가 하나하나 등록하지 않아도 자동으로 등록된다( 대신 빌드시간이 오래걸린다.) -> 하지만 false로 빌드시간 단축 
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -42,7 +42,6 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
       '@nuxtjs/axios'
-    
   ],
 
  

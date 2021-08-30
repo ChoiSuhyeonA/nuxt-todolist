@@ -7,25 +7,23 @@
   </div>
 </template>
 
+
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  data(){
-    return{
-      newTodoItem:''
-    }
-  },
-  methods:{
-    addTodo():void{
+import { Component, Vue, Prop } from 'nuxt-property-decorator';
+@Component
+export default class TodoInput extends Vue{
+ 
+   newTodoItem:string=''
+   
+  public addTodo():void{
       if(this.newTodoItem!==""){
         const value:string = this.newTodoItem && this.newTodoItem.trim() ;
           this.$emit('addTodo', value);
-          this.newTodoItem  =''
-          
+          this.newTodoItem  ='' 
       }
     }
-  }
-})
+  
+}
 </script>
 
 

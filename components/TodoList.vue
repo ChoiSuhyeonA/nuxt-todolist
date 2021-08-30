@@ -14,19 +14,25 @@
   </section>
 </template>
 
+
 <script lang="ts">
-import Vue from 'vue'
+
+import { Component, Vue, Prop, Emit } from 'nuxt-property-decorator';
 import inputs from '@/components/TodoInput.vue'
-export default Vue.extend({
+@Component
+export default class TodoList extends Vue{
   // eslint-disable-next-line vue/require-prop-types
-  props:['propsdata'],
-  methods:{
    
-    removeTodo(todoItem:string, index:number){
+   //props:['propsdata']
+   @Prop() propsdata: string[] | undefined
+
+
+  public removeTodo(todoItem:string, index:number):void{
      this.$emit('removeTodo', todoItem, index);
     }
-  }
-})
+ 
+  
+}
 </script>
 
 <style scoped>

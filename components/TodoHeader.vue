@@ -6,9 +6,10 @@
 </template>
 
 <script lang ="ts">
-import Vue from 'vue'
-export default  Vue.extend({
-})
+import { Component, Vue, Prop } from 'nuxt-property-decorator';
+@Component
+export default  class TodoHeader extends Vue{
+}
 </script>
 
 <style scoped>

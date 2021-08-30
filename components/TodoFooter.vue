@@ -5,14 +5,18 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  methods:{
-    clearTodo():void{
-     this.$emit('removeAll')
+import { Component, Vue, Prop , Emit} from 'nuxt-property-decorator';
+@Component
+export default class TodoFooter extends Vue{
+  
+    // public clearTodo():void{
+    //  this.$emit('removeAll')
+    // }
+    
+    @Emit('clearTodo')
+    public clearTodo(){
     }
-  }
-})
+}
 </script>
 
 <style>
