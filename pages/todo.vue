@@ -16,16 +16,14 @@ import TodoInput from '~/components/TodoInput.vue'
 import TodoList from '~/components/TodoList.vue'
 import TodoFooter from '~/components/TodoFooter.vue'
 import { Component, Vue } from 'nuxt-property-decorator';
-import Vuex from 'vuex'
+
+
 
 import { param } from '~/api/todolist'
 import axios from 'axios'
 
 
-Vue.use(Vuex)
-const store = new Vuex.Store({
 
-})
 
  @Component({
     components:{

@@ -6,7 +6,7 @@ const app = express()
 //express-todolist 백엔드 연결 
 app.use('/todolist', todolist);
 
-app.use(express.json())
+//app.use(express.json())
 
 // 실제로는 /api 라우트를 처리하는 메소드가 된다.
 // app.get('/', function(req, res) {
