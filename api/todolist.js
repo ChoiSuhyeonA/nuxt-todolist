@@ -31,16 +31,35 @@ router.get('/', (req, res) =>{
     // })
     //res.send({name:"suhyeon1137", name2:"dmswn4011"})
 
-    connection.query('SELECT * FROM todolist ORDER BY id DESC', function (err, rows) {
+    
+    connection.query(`SELECT * FROM todolist ORDER BY id DESC`, function (err, rows) {
         if (err) throw err;
         res.send(rows);
       });
+
 })
 
-router.post('/', function(req, res){
+// 실제로는 /api/todolist 라우트를 처리하는 메소드가 된다.
+router.get('/:id', (req, res) =>{
+    // console.log('express api/todolist');
+    
+     // res.json({
+     //     success:'true'
+     // })
+     //res.send({name:"suhyeon1137", name2:"dmswn4011"})
+    
+     let id = parseInt(req.params.id)
+     connection.query(`SELECT * FROM todolist ORDER BY id DESC LIMIT ?, 10`, [id], function (err, rows) {
+         if (err) throw err;
+         res.send(rows);
+       });
+ 
+ })
+ 
 
-    newTodoItem = req.body.data.value
-    console.log('server axios get newTodoItem:', newTodoItem)
+router.post('/', function(req, res){
+    newTodoItem = req.body.value;
+    console.log(newTodoItem)
     connection.query('INSERT INTO todolist (name) values(?)  ', [newTodoItem],function(err, result){
         if(err) throw err;
         else{

@@ -9,33 +9,64 @@
            <i class ="far fa-trash-alt" aria-hidden="true"></i>
          </span>
       </li>
-       
     </ul>
+    <infinite-loading  spinner="spiral" @infinite="infiniteScroll"></infinite-loading>
   </section>
 </template>
 
 
-<script lang="ts">
 
+<script lang="ts">
 import { Component, Vue, Prop, Emit } from 'nuxt-property-decorator';
 import inputs from '@/components/TodoInput.vue'
+import InfiniteLoading from 'vue-infinite-loading'
+import AxiosInstance from '~/util/api'
+
 
 @Component
 export default class TodoList extends Vue{
-  // eslint-disable-next-line vue/require-prop-types
-   
+
+  
+  // eslint-disable-next-line vue/require-prop-types   
    //props:['propsdata']
    @Prop() propsdata: string[] | undefined
+   @Prop() page: any | undefined
 
+  //임시 배열 변수 Data입니다.
+  Data: string[] =['']
+   //computed
+  get url(){
+    return "/api/todolist/" + this.page;
+  }
+
+  public async infiniteScroll($state: {​​​​​​​​ loaded: () =>void; complete: () =>void }​​​​​​​​​​​​​​​​){
+      setTimeout((async) => {
+					  this.page = this.page+10
+            this.Data = []
+            this.$axios.get(this.url).then((res)=>{
+           // this.Data= res.data
+      	
+						if (res &&res.data.length > 1) {
+              res.data.forEach((todoItem: any) => this.Data.push(todoItem))     
+              this.$emit('deliveryInfinite', this.Data, this.page)
+							$state.loaded()							
+							} else {							
+							$state.complete()
+							}
+					})
+					.catch((err) => {
+						console.log(err)
+					})
+				}, 1000)
+  }
+  
   public removeTodo(todoItem:string, index:number):void{
      this.$emit('removeTodo', todoItem, index);
     }
-
   //  @Emit('removeTodo')
   //  removeTodo(todoItem:string, index:number){
   //    return (todoItem, index)
   //  }
-
   
 }
 </script>
