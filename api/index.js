@@ -1,10 +1,10 @@
 // <project root>/api/index.js
-const express = require('express');
-const todolist = require('./todolist');
+const express = require("express");
+const todolist = require("./todolist");
 // express 인스턴스 생성
-const app = express()
-//express-todolist 백엔드 연결 
-app.use('/todolist', todolist);
+const app = express();
+//express-todolist 백엔드 연결
+app.use("/todolist", todolist);
 
 //app.use(express.json())
 
@@ -16,6 +16,6 @@ app.use('/todolist', todolist);
 // 모듈로 사용할 수 있도록 export
 // 앱의 /api/* 라우트로 접근하는 모든 요청은 모두 app 인스턴스에게 전달된다.
 module.exports = {
-  path: '/api',
+  path: "/api",
   handler: app
-}
+};
