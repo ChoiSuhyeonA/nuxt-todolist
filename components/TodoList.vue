@@ -1,7 +1,6 @@
 <template>
   <section>
     <ul>
-      <!-- v-for를 사용할때는 반드시 key값을 연결해줘야 한다. -->
       <li v-for="(todoItem, index) in propsdata" :key="index" >
          <i class="checkBtn fas fa-check" aria-hidden="true"></i>
          {{ todoItem.name }}
@@ -9,8 +8,18 @@
            <i class ="far fa-trash-alt" aria-hidden="true"></i>
          </span>
       </li>
-    </ul>
+    </ul> 
     <infinite-loading  spinner="spiral" @infinite="infiniteScroll"></infinite-loading>
+
+    <!-- <RecycleScroller
+      class="scroller"
+      :items="propsdata"
+      :item-size="32"
+      key-field="index"
+      v-slot="{ todoItem }"
+    >
+      {{ todoItem.name }}
+     </RecycleScroller> -->
   </section>
 </template>
 
@@ -21,6 +30,7 @@ import { Component, Vue, Prop, Emit } from 'nuxt-property-decorator';
 import inputs from '@/components/TodoInput.vue'
 import InfiniteLoading from 'vue-infinite-loading'
 import AxiosInstance from '~/util/api'
+// import VueVirtualScroller from 'vue-virtual-scroller'
 
 
 @Component

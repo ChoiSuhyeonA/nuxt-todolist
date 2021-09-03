@@ -20,6 +20,8 @@
     "nuxt": "^2.15.7",
     "sass": "^1.38.1",
     "vue-infinite-loading": "^2.4.5",
+    "vue-virtual-scroll-list": "^2.3.2",
+    "vue-virtual-scroller": "^1.0.10",
     "vuetify": "^1.5.24",
     "vuetify-loader": "^1.0.5",
     "webpack": "^4.46.0"

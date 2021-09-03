@@ -4,12 +4,12 @@ import  todoitems from './todoitems'
 Vue.use(Vuex)
 
 
-export const store = new Vuex.Store({
+export const stores = new Vuex.Store({
   modules:{
   item: todoitems
   },
   state : () => ({ 
     todoItems :['hello suhyeon']
-}),
+  }),
   
 })

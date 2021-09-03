@@ -17,7 +17,8 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href:"https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
-      integrity:"sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p", crossorigin:"anonymous"}
+      integrity:"sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p", crossorigin:"anonymous"},
+      {rel :"stylesheet" ,href:"vue-virtual-scroller/dist/vue-virtual-scroller.css"}
     ]
   },
   

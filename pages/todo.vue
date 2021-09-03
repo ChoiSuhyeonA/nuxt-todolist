@@ -21,6 +21,8 @@ import AxiosInstance from '~/util/api'
 
 import { param } from '~/api/todolist'
 import axios from 'axios'
+import {stores} from 'store/index'
+
 
  
 
@@ -49,7 +51,7 @@ import axios from 'axios'
 
 export default class MainComponent extends Vue {
 
-    
+  
     //변수
     public newTodoItem:String= ''
     public deleteTodoItem:String= ''
@@ -63,7 +65,7 @@ export default class MainComponent extends Vue {
     // this.init() 
       this.fetchData()
   }
-   
+    
   // public get todos(){
   //   return this.$store.state.todoItems
   // }
